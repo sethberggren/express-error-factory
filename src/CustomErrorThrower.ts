@@ -74,7 +74,7 @@ export default class CustomErrorThrower<
      * @returns Object including error type, status code, and message.
      */
     <Subtype extends keyof UserErrorResponses[Type]>(subtype: Subtype) =>
-      this.errorResponses[type][subtype];
+      new ExpressCustomError(this.errorResponses[type][subtype]);
 
   /**
    *

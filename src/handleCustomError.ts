@@ -36,11 +36,10 @@ export function handleCustomError(unknownErrorMessage?: string) {
           : defaultErrorMessage,
       };
 
-      res.status(500);
-      res.send(errorResponse);
+      res.status(500).send(errorResponse);
     }
 
-    res.status(err.statusCode);
-    res.send({ type: err.type, message: err.message });
+    res.status(err.statusCode).send({ type: err.type, message: err.message });
+
   };
 }

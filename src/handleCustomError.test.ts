@@ -38,8 +38,8 @@ describe("tests for handle custom error middleware", () => {
   beforeEach(() => {
     mockRequest = {};
     mockResponse = {
-      status: jest.fn(),
-      send: jest.fn(),
+     status: jest.fn().mockReturnThis(),
+     send: jest.fn()
     };
   });
 
@@ -61,7 +61,6 @@ describe("tests for handle custom error middleware", () => {
       type: customError.type,
       message: customError.message,
     });
-    expect(nextFunction).not.toBeCalled();
   });
 
   it("should respond with a different error if an error not of the ExpressCustomError class is passed through", () => {
@@ -81,8 +80,6 @@ describe("tests for handle custom error middleware", () => {
       type: "Unknown Error",
       message: "Sorry, an unkown error has occured.  Please try again.",
     });
-
-    expect(nextFunction).not.toBeCalled();
   });
 
   it("should respond with an optional custom error message if an error not of the ExpressCustomError class is passed through", () => {
@@ -104,6 +101,5 @@ describe("tests for handle custom error middleware", () => {
       type: "Unknown Error",
       message: customErrorMessage,
     });
-    expect(nextFunction).not.toBeCalled();
   });
 });

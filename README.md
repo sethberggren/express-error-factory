@@ -38,7 +38,9 @@ const customErrors = new CustomErrorThrower({
 })
 ```
 
-Errors can then be thrown easily in any Express route. 
+Errors can then be generated or thrown easily in any Express route. 
+
+For synchronous code, use the `throwCustomError(errorType)` method.  
 
 ```typescript
 // generates a function to throw 'rodentError' errors 
@@ -47,6 +49,23 @@ const thrower = customErrors.throwCustomError("rodentError");
 // throws an error with the information in the tooManySquirrels object.
 thrower("tooManySquirrels");
 ```
+
+For asynchronous code, promises, or try/catch blocks, pass the error generated from the `getErrorResponse(errorType)` method to the Express `next()` function.  For example: 
+
+```typescript
+
+// generates a function to create 'rodentError' errors
+const createError = customErrors.getErrorResponse("insectError");
+
+try {
+    fetchDataFromApi();
+} catch (error) {
+    // do something to narrow error type to determine which custom error to throw
+    next(createError("bees"));
+}
+```
+
+See the Express documentation [here](https://expressjs.com/en/guide/error-handling.html) for more information about the difference between syncrhonous and asynchronous errors.  
 
 Include the middleware as the last  `app.use()`.  The function can be given a custom error message for uncaught errors not specified in the CustomErrorThrower class.
 
