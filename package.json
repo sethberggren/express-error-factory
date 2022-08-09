@@ -1,6 +1,6 @@
 {
   "name": "express-error-factory",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A custom error and error middleware solution for Express, written in TypeScript with error types and subtypes in mind.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
