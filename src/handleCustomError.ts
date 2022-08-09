@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ExpressCustomError } from ".";
+import { ExpressCustomError } from "./CustomErrorThrower";
 
 /**
  * Returns Express middleware to handle errors.

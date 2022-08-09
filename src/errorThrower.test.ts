@@ -1,4 +1,4 @@
-import CustomErrorThrower, { ExpressCustomError } from ".";
+import CustomErrorThrower, { ExpressCustomError } from "./CustomErrorThrower";
 
 describe("tests of the CustomErrorThrower class", () => {
   const testCustomErrorThrower = new CustomErrorThrower({

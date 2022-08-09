@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import CustomErrorThrower, { ExpressCustomError } from ".";
+import CustomErrorThrower, { ExpressCustomError } from "./CustomErrorThrower";
 import { handleCustomError } from "./handleCustomError";
 
 describe("tests for handle custom error middleware", () => {
